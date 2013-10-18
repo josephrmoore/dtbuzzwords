@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>DT Buzzwords</title>
+	<meta name="generator" content="TextMate http://macromates.com/">
+	<meta name="author" content="Joseph Moore">
+	<meta charset="utf-8">
+	<!-- Date: 2013-04-30 -->
+	<link rel="stylesheet" href="css/styles.css" type="text/css" media="all" />
+	<!-- Mobile viewport optimized: h5bp.com/viewport -->
+  	<meta name="viewport" content="width=device-width">
+	<!--[if lt IE 9]>
+		<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+</head>
+<body>
+  <!-- Prompt IE 6 users to install Chrome Frame. Remove this if you support IE 6.
+       chromium.org/developers/how-tos/chrome-frame-getting-started -->
+  <!--[if lte IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
+<style>
+	/* Reset */
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td, button {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent;
+}
+body {
+  line-height: 1;
+}
+ol, ul {
+  list-style: none;
+}
+blockquote, q {
+  quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+
+/* remember to define focus styles! */
+:focus {
+  outline: 0;
+}
+
+/* remember to highlight inserts somehow! */
+ins {
+  text-decoration: none;
+}
+del {
+  text-decoration: line-through;
+}
+
+/* tables still need 'cellspacing="0"' in the markup */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+article,aside,canvas,details,figcaption,figure,
+footer,header,hgroup,menu,nav,section,summary, video {
+  display:block;
+}
+
+/* Clearing Floats */
+
+.group:after {
+  visibility: hidden;
+  display: block;
+  font-size: 0;
+  content: " ";
+  clear: both;
+  height: 0;
+}
+* html .group             { zoom: 1; } /* IE6 */
+*:first-child+html .group { zoom: 1; } /* IE7 */
+
+/* General Styles */
+
+.off {
+	display:none !important;
+}
+
+.cloud {
+	width: 1000px;
+	height: 800px;
+	border: 1px solid #ccc;
+	margin: -6px auto;
+}
+
+.selected {
+	color: red;
+}
+
+.buzzword {
+	display: inline-block;
+	padding: 30px;
+}
+
+.count {
+	display: block;
+}
+
+body {
+	font-family: Helvetica, Arial, sans-serif;
+}
+
+h1 {
+	font-size: 48px;
+	margin-right: 20px;
+	padding-left: 278px;
+	position: relative;
+}
+h1:before{
+	content: "";
+	background: url(https://twimg0-a.akamaihd.net/profile_images/1346460186/mfadt_logo.jpg) no-repeat center top;
+	width: 300px;
+	height: 200px;
+	position: absolute;
+	left:-20px;
+	top:-122px;
+}
+
+h2 {
+	padding: 20px;
+	margin-left: 300px;
+	margin-top: -20px;
+}
+
+.control {
+	clear: both;
+	padding: 20px;
+	background: #eee;
+	display: inline-block;
+	margin: 20px auto;
+	position: fixed;
+	top: 0;
+	right: 0;
+	z-index: 10000;
+}
+
+#wrapper {
+	padding: 40px;
+}
+
+.level1 {
+	font-size: 10px;
+}
+.level2 {
+	font-size: 12px;
+}
+.level3 {
+	font-size: 14px;
+}
+.level4 {
+	font-size: 18px;
+}
+.level5 {
+	font-size: 24px;
+}
+.level6 {
+	font-size: 28px;
+}
+.level7 {
+	font-size: 32px;
+}
+.level8 {
+	font-size: 36px;
+}
+.level9 {
+	font-size: 42px;
+}
+.level10 {
+	font-size: 48px;
+}
+
+</style>
+<div id="wrapper">
+
+	<div id="wall" class="wall">
+		<form>
+			<label for="who">Who Are You?</label>
+			<input id="who" name="who" class="who text" type="text" value="" />
+			<input type="submit" value="Submit" />
+		</form>
+	</div>
+
+	<div id="index" class="index off">
+		<h1>MFADT Buzzwords</h1>
+		<h2>Hello, <span id="greeting"></span></h2>
+		<section id="control" class="control">
+			<form>
+				<label class="off" for="new-buzzword">Enter Buzzword</label>
+				<input id="new-buzzword" class="new-buzzword text" name="new-buzzword" type="text" value="" />
+				<input type="submit" value="Add Buzzword" />
+			</form>
+		</section>
+		<section id="cloud" class="cloud">
+			<div class="buzzword prototype off" data-who="" data-up="0" data-down="0">
+				<span class="word"></span>
+				<span class="count off">-<span class="neg">0</span>/+<span class="pos">0</span></span>
+			</div>
+		</section>
+	</div>
+</div>
+
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js"></script>
+	
+	<script>
+		jQuery(document).ready(function($){
+			jQuery.fn.reverse = [].reverse;
+			var all_buzzwords = [];
+			var visitor = '';
+			var fraud = false;
+			var me = localStorage.getItem("whoiam");
+			var ip = myIP();
+			
+			if(!me){
+				whoAreYou();
+				
+			} else {
+				visitor = me;
+				$('#greeting').html(visitor);
+				loadCloud();
+			}
+			
+			$(window).keydown(function(e) {
+				if(e.which == 187){
+					console.log('+');
+					increaseBuzzword($( ".buzzword.selected" ));
+				}
+				if(e.which == 189){
+					console.log('-');
+					decreaseBuzzword($( ".buzzword.selected" ));
+				}
+			});
+			
+			function checkIdentity(id){
+				var me = localStorage.getItem("whoiam");
+				var oldIP = localStorage.getItem("whoiam_ip");
+				
+				if(!me){
+					localStorage.setItem("whoiam", id);
+					localStorage.setItem("whoiam_ip", ip);
+					$('#greeting').html(id);
+				}
+				
+				if(me && (me != id)){
+					fraud = true;
+					visitor = me;
+					$('#greeting').html(visitor);
+					fraudWarning();
+				} else {
+					visitor = id;
+					$('#greeting').html(visitor);
+				}
+			}
+			
+			function saveStats(buzzword_obj){
+				var up = buzzword_obj.attr('data-up');
+				var down = buzzword_obj.attr('data-down');
+				var who = buzzword_obj.attr('data-who');
+				var value = buzzword_obj.find('.word').html();
+				
+				for(i=0;i<all_buzzwords.length;i++){
+					if(all_buzzwords[i].value == buzzword_obj.find('.word').html()){
+						if(all_buzzwords[i].up != up || all_buzzwords[i].down != down){
+							all_buzzwords[i].up = up;
+							all_buzzwords[i].down = down;
+							var url = "update_stats.php?up="+up+"&down="+down+"&who="+who+"&value="+value;				
+							$.ajax({
+								url: url,
+								success: function(data){
+									console.log(data);
+									loadStats();
+
+								}
+							});
+						}
+					}
+				}
+								
+
+			}
+			
+			function fraudWarning(){
+				alert("FRAUD!");
+			}
+						
+			function getBuzzwords(){
+				$.ajax({
+					url: "buzzwords.json",
+					success: function(data){
+						for(o in data.buzzwords){
+							var obj = data.buzzwords[o];
+							var clone = newBuzzword(obj.value);
+							all_buzzwords.push(obj);
+							clone.attr('data-up', obj.up);
+							clone.attr('data-down', obj.down);
+							clone.find('.count .pos').html(obj.up);
+							clone.find('.count .neg').html(obj.down);
+							loadStats();
+						}
+					}
+				});
+			}
+			
+			function checkBuzzwords(buzzword_text){
+				var allow = true;
+				for(i=0; i<all_buzzwords.length; i++){
+/* 					console.log(all_buzzwords[i].value + " " + buzzword_text); */
+					var result = buzzword_text.localeCompare(all_buzzwords[i].value);
+					if(result == 0){
+						allow = false;
+						if(visitor != all_buzzwords[i].who){
+							$('.buzzword').each(function(){
+								if($(this).find('.word').html() == all_buzzwords[i].value){
+									increaseBuzzword($(this));
+								}
+							});
+						} 
+					}
+				}
+				return allow;
+			}
+			
+			function submitBuzzword(buzzword_obj){
+				console.log(buzzword_obj.find('.word').html());
+				var bool = checkBuzzwords(buzzword_obj.find('.word').html());
+/* 				console.log(bool); */
+				if(bool){
+
+					var up = buzzword_obj.attr('data-up');
+					var down = buzzword_obj.attr('data-down');
+					var who = buzzword_obj.attr('data-who');
+					var value = buzzword_obj.find('.word').html();
+					
+					all_buzzwords.push({"up":up, "down": down, "who": who, "value": value, "ip":ip});
+					
+					var url = "update_buzzwords.php?ip="+ip+"&up="+up+"&down="+down+"&who="+who+"&value="+value;
+					
+					$.ajax({
+						url: url,
+						success: function(data){
+							console.log(data);
+						}
+					});
+				} else {
+					$('.buzzword').reverse().each(function(){
+						if($(this).find('.word').html() == buzzword_obj.find('.word').html()){
+							$(this).remove();
+							return false;
+						}
+					});
+				}
+			}
+			
+			function selectBuzzword(buzzword_obj){
+				$('.buzzword').removeClass('selected');
+				buzzword_obj.addClass('selected');
+			}
+			
+			function loadStats(){
+				var words = $('.buzzword');
+				var total = 0;
+				for(i=0; i<all_buzzwords.length; i++){
+					words.each(function(){
+						if($(this).find('.word').html() == all_buzzwords[i].value){
+							$(this).attr('data-up', all_buzzwords[i].up);
+							$(this).attr('data-down', all_buzzwords[i].down);
+							total += parseInt(all_buzzwords[i].up);
+							total -= parseInt(all_buzzwords[i].down);
+						}
+					});
+				}
+				console.log(total);
+				words.each(function(){
+					var mine = parseInt($(this).attr('data-up'))-parseInt($(this).attr('data-down'));
+					var pct = mine/total;
+					
+					$(this).find('.word').removeClass('level1');
+					$(this).find('.word').removeClass('level2');
+					$(this).find('.word').removeClass('level3');
+					$(this).find('.word').removeClass('level4');
+					$(this).find('.word').removeClass('level5');
+					$(this).find('.word').removeClass('level6');
+					$(this).find('.word').removeClass('level7');
+					$(this).find('.word').removeClass('level8');
+					$(this).find('.word').removeClass('level9');
+					$(this).find('.word').removeClass('level10');
+
+					if(pct<.02){
+						$(this).find('.word').addClass('level1');
+					} else if (pct<.04&&pct>=.02){
+						$(this).find('.word').addClass('level2');
+					} else if (pct<.06&&pct>=.04){
+						$(this).find('.word').addClass('level3');
+					} else if (pct<.08&&pct>=.06){
+						$(this).find('.word').addClass('level4');
+					} else if (pct<.1&&pct>=.08){
+						$(this).find('.word').addClass('level5');
+					} else if (pct<.12&&pct>=.1){
+						$(this).find('.word').addClass('level6');
+					} else if (pct<.14&&pct>=.12){
+						$(this).find('.word').addClass('level7');
+					} else if (pct<.16&&pct>=.14){
+						$(this).find('.word').addClass('level8');
+					} else if (pct<.18&&pct>=.16){
+						$(this).find('.word').addClass('level9');
+					} else if (pct>=.2){
+						$(this).find('.word').addClass('level10');
+					} 
+				});
+			}
+			
+			function newBuzzword(buzzword_text){
+				var root = $('.cloud .buzzword.prototype');
+				var clone = root.clone();
+				clone.removeClass('prototype');
+				clone.removeClass('off');
+				clone.find('.word').html(buzzword_text);
+				clone.attr('data-who', visitor);
+				root.before(clone);
+				clone.draggable({
+					containment: "parent"
+				});
+				$('.buzzword').click(function(){
+					selectBuzzword($(this));
+					$('.buzzword').find('.count').addClass('off');
+					$(this).find('.count').removeClass('off');
+				});
+				return clone;
+			}
+			
+			function increaseBuzzword(buzzword_obj){
+				var val = parseInt(buzzword_obj.attr('data-up'));
+				val++;
+				buzzword_obj.attr('data-up', val);
+				buzzword_obj.find('.count .pos').html(val);
+				saveStats(buzzword_obj);
+				loadStats();
+			}
+			
+			function decreaseBuzzword(buzzword_obj){
+				var val = parseInt(buzzword_obj.attr('data-down'));
+				val++;
+				buzzword_obj.attr('data-down', val);
+				buzzword_obj.find('.count .neg').html(val);
+				saveStats(buzzword_obj);
+				loadStats();
+			}
+			
+			function whoAreYou(){
+				$('#wall form').submit(function(){
+					var saystheyare = $('#wall form .text').val();
+					checkIdentity(saystheyare);
+					loadCloud();
+					return false;
+				});
+			}
+			
+			function loadCloud(){
+				$('#wall').addClass('off');
+				$('#index').removeClass('off');
+				$('#control form').submit(function(){
+					var word = $('#control form .text').val();
+					submitBuzzword(newBuzzword(word));
+					return false;
+				});
+				getBuzzwords();
+			}
+			
+			function myIP() {
+			    if (window.XMLHttpRequest) xmlhttp = new XMLHttpRequest();
+			    else xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+			
+			    xmlhttp.open("GET","http://api.hostip.info/get_html.php",false);
+			    xmlhttp.send();
+			
+			    hostipInfo = xmlhttp.responseText.split("\n");
+			
+			    for (i=0; hostipInfo.length >= i; i++) {
+			        ipAddress = hostipInfo[i].split(":");
+			        if ( ipAddress[0] == "IP" ) return ipAddress[1];
+			    }
+			
+			    return false;
+			}
+			
+		});
+
+	</script>
+  <script>window.jQuery || document.write('<script src="js/libs/jquery-1.7.1.min.js"><\/script>')</script>
+  <!-- Asynchronous Google Analytics snippet. Change UA-XXXXX-X to be your site's ID.
+       mathiasbynens.be/notes/async-analytics-snippet -->
+  <script>
+    var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
+    (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+    g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+    s.parentNode.insertBefore(g,s)}(document,'script'));
+  </script>
+</body>
+</html>
