@@ -367,6 +367,7 @@ h2 {
 					});
 				} else {
 					$('.buzzword').reverse().each(function(){
+					
 						if($(this).find('.word').html() == buzzword_obj.find('.word').html()){
 							$(this).remove();
 							return false;
@@ -384,8 +385,10 @@ h2 {
 				var words = $('.buzzword');
 				var total = 0;
 				for(i=0; i<all_buzzwords.length; i++){
+					var patt = eval("/"+all_buzzwords[i].value+"/i");
+
 					words.each(function(){
-						if($(this).find('.word').html() == all_buzzwords[i].value){
+						if(patt.test($(this).find('.word').html())){
 							$(this).attr('data-up', all_buzzwords[i].up);
 							$(this).attr('data-down', all_buzzwords[i].down);
 							total += parseInt(all_buzzwords[i].up);
