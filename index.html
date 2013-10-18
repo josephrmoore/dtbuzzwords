@@ -278,7 +278,9 @@ h2 {
 				var value = buzzword_obj.find('.word').html();
 				
 				for(i=0;i<all_buzzwords.length;i++){
-					if(all_buzzwords[i].value == buzzword_obj.find('.word').html()){
+					var patt = eval("/"+all_buzzwords[i].value+"/i");
+/* 					console.log(patt); */
+					if(patt.test(buzzword_obj.find('.word').html())){
 						if(all_buzzwords[i].up != up || all_buzzwords[i].down != down){
 							all_buzzwords[i].up = up;
 							all_buzzwords[i].down = down;
@@ -324,12 +326,15 @@ h2 {
 				var allow = true;
 				for(i=0; i<all_buzzwords.length; i++){
 /* 					console.log(all_buzzwords[i].value + " " + buzzword_text); */
-					var result = buzzword_text.localeCompare(all_buzzwords[i].value);
-					if(result == 0){
+					var patt = eval("/"+all_buzzwords[i].value+"/i");
+/* 					console.log(patt.test(buzzword_text)); */
+					var result = patt.test(buzzword_text);
+					if(result){
 						allow = false;
 						if(visitor != all_buzzwords[i].who){
 							$('.buzzword').each(function(){
-								if($(this).find('.word').html() == all_buzzwords[i].value){
+								
+								if(patt.test($(this).find('.word').html())){
 									increaseBuzzword($(this));
 								}
 							});
@@ -340,7 +345,7 @@ h2 {
 			}
 			
 			function submitBuzzword(buzzword_obj){
-				console.log(buzzword_obj.find('.word').html());
+/* 				console.log(buzzword_obj.find('.word').html()); */
 				var bool = checkBuzzwords(buzzword_obj.find('.word').html());
 /* 				console.log(bool); */
 				if(bool){
@@ -388,7 +393,7 @@ h2 {
 						}
 					});
 				}
-				console.log(total);
+/* 				console.log(total); */
 				words.each(function(){
 					var mine = parseInt($(this).attr('data-up'))-parseInt($(this).attr('data-down'));
 					var pct = mine/total;
